@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <title> Q3 Alternative Assessment </title>
+    
+    <meta charset="UTF-8">
+    <meta name="author" content="Anika Justine Targa">
+    <meta name="keywords" content="HTML, CSS, JS">
+    <meta name="revised" content="08-02-2022">
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  
+    <style>
+  
+      @import url('https://fonts.googleapis.com/css2?family=Lora&family=Prata&display=swap');
+      
+      h2 {
+        font-family: 'Lora', serif;
+        margin-top: 2em;
+        margin-bottom: 1.1em;
+      }
+      
+      input::-webkit-datetime-edit-day-field {
+        margin-left: 8px;
+      }
+      
+      input::-webkit-datetime-edit-text {
+        color: grey;
+        padding: 0 0.1em;
+      }
+  
+      input {
+        font-family: 'Lora', serif;
+      }
+  
+      button {
+        font-family: 'Lora', serif;
+      }
+      
+    </style>
+    
+  </head>
+  
+  <body>
+  
+    <center>
+  
+      <h2> Calculate if my Birthday was a Leap Year </h2>
+  
+      <input type=date id="BDAY"> 
+      <button onclick="calcAgeNow()"> Calculate Age </button>
+    
+    </center>
+  
+    <script>
+    
+    // enter a birthday and find out how old the person is
+    
+      function calcAgeNow(){
+    
+        // declare the user's input as a value of a variable
+        
+        let bday_input = document.getElementById("BDAY").value;
+        let bday = new Date(bday_input);  
+        console.log("Birthdate: " + bday);
+    
+        
+        // calculate month difference from the current date in time  
+        
+        let month_diff = Date.now() - bday.getTime();  
+        console.log("Month difference: " + month_diff + " = " + Date.now() + " - " + bday.getTime());
+    
+        
+        // convert the calculated difference in date format 
+        
+        let age_dt = new Date(month_diff);  
+        console.log("Reference Date: "  + age_dt) ;
+    
+          
+        // extract the year from the reference date     
+        
+        let year = age_dt.getUTCFullYear();  
+        console.log("Reference Date Year: " + year);
+    
+        
+        // calculate the age of the user
+        
+        let age = Math.abs(year - 1970);  
+        console.log("Age: " + age);
+    
+        
+        //display the calculated age
+    
+        document.write("Age of the date entered: " + age + " years");
+        document.write("<br>"); 
+    
+        
+        // extract the year from the birthdate     
+        
+        let birthYear = bday.getUTCFullYear();  
+        console.log("Birth Year: " + birthYear);
+    
+        
+        // determine if birthdate is a leap year or not
+        
+        const leap = new Date(birthYear, 1, 29).getDate() === 29;
+        
+          if (leap) {
+            console.log(birthYear + ' is a leap year');
+            document.write("Your birth year, " + birthYear + ", was a leap year.");
+          }
+            
+          else {
+            console.log(birthYear + ' is not a leap year');
+            document.write("Your birth year, " + birthYear + ", was not a leap year.")
+          }
+      
+      }
+    
+    </script>
+    
+  </body>
+</html>
